@@ -35,5 +35,4 @@ build/
 ## custom ##
 .master_db
 
-
-!**/master_db
+/master_db
