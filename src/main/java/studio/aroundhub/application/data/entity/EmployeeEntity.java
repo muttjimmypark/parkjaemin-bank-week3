@@ -20,7 +20,7 @@ public class EmployeeEntity {
 
     String name;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = BranchEntity.class)
     @JoinColumn(name = "branch_id")
     Integer branch_id;
 }

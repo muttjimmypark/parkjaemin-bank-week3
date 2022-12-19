@@ -26,16 +26,16 @@ public class AccountEntity {
 
     Integer balance;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = EmployeeEntity.class)
     @JoinColumn(name = "employee_id")
     Integer employee_id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = BranchEntity.class)
     @JoinColumn(name = "branch_id")
     Integer branch_id;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(targetEntity = CustomerEntity.class)
     @JoinColumn(name = "customer_id")
     Integer customer_id;
 
