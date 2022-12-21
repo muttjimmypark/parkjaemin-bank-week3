@@ -1,7 +1,10 @@
 package studio.aroundhub.application.data.entity;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
+@Builder
 @Entity
 @Table(name = "transaction")
 @SequenceGenerator(
@@ -23,5 +26,9 @@ public class TransactionEntity {
 
     @ManyToOne(targetEntity = AccountEntity.class)
     @JoinColumn(name = "account_id")
-    String account_number;
+    String deposit_account_number;
+
+    @ManyToOne(targetEntity = AccountEntity.class)
+    @JoinColumn(name = "account_id")
+    String withdraw_account_number;
 }

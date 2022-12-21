@@ -1,9 +1,6 @@
 package studio.aroundhub.application.data.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +10,7 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
@@ -30,9 +28,9 @@ public class CustomerEntity {
     @NotNull
     String phone_number;
 
-    CustomerGrade grade;
-
     String organization;
+
+    CustomerGrade grade;
 
     Timestamp created_at;
 
