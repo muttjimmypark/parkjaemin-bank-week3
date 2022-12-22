@@ -18,7 +18,7 @@ public interface BankService {
 
     Optional<CustomerEntity> deleteCustomer(Integer id);
 
-    List<CustomerEntity> getAllCustomer();
+    List<CustomerEntity> findAllCustomer();
 
     AccountEntity createAccount(
             String id,
@@ -31,7 +31,7 @@ public interface BankService {
 
     Optional<AccountEntity> deleteAccount(String id);
 
-    List<AccountEntity> getAllAccount();
+    List<AccountEntity> findAllAccount();
 
     TransactionEntity createTransaction(
             Integer balance,
@@ -41,6 +41,6 @@ public interface BankService {
             String withdraw_account_number
     );
 
-    List<TransactionEntity> getAllTransaction();
+    List<TransactionEntity> findAllTransaction();
 
 }

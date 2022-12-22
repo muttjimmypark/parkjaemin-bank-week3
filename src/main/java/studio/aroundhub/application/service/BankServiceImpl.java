@@ -1,6 +1,7 @@
 package studio.aroundhub.application.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import studio.aroundhub.application.data.entity.*;
 import studio.aroundhub.application.repository.*;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BankServiceImpl implements BankService {
 
     private static AccountRepository accountRepository;
@@ -22,8 +23,7 @@ public class BankServiceImpl implements BankService {
     @Override
     public CustomerEntity createCustomer(Integer id, String name, String social_number, String phone_number, String organization, CustomerGrade grade) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
-        return customerRepository.save(
+        CustomerEntity customerEntity =
                 CustomerEntity.builder()
                         .id(id)
                         .name(name)
@@ -34,8 +34,9 @@ public class BankServiceImpl implements BankService {
                         .grade(grade)
                         .created_at(timestamp)
                         .updated_at(timestamp)
-                        .build()
-        );
+                        .build();
+
+        return customerRepository.saveAndFlush(customerEntity);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public List<CustomerEntity> getAllCustomer() {
+    public List<CustomerEntity> findAllCustomer() {
         return customerRepository.findAll();
     }
 
@@ -76,7 +77,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public List<AccountEntity> getAllAccount() {
+    public List<AccountEntity> findAllAccount() {
         return accountRepository.findAll();
     }
 
@@ -94,7 +95,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public List<TransactionEntity> getAllTransaction() {
+    public List<TransactionEntity> findAllTransaction() {
         return transactionRepository.findAll();
     }
 }

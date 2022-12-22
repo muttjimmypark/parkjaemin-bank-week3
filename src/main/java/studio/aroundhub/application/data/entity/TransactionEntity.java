@@ -25,10 +25,8 @@ public class TransactionEntity {
     Integer balance_after_transaction;
 
     @ManyToOne(targetEntity = AccountEntity.class)
-    @JoinColumn(name = "account_id")
     String deposit_account_number;
 
     @ManyToOne(targetEntity = AccountEntity.class)
-    @JoinColumn(name = "account_id")
     String withdraw_account_number;
 }
